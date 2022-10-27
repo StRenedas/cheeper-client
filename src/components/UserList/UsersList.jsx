@@ -1,10 +1,10 @@
-import User from '../User/User';
+import { User } from '../User/User';
 
 import './UsersList.scss';
 import { useEffect, useState } from 'react';
 import { getFriends, getFriendsCount } from '../../api/api';
 
-export default function UsersList({ Users, handleSelect, SelectedUser }) {
+function UsersList({ Users, handleSelect, SelectedUser }) {
   const [friends, setFriends] = useState([]);
   const [friendsCount, setFriendsCount] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -56,3 +56,5 @@ export default function UsersList({ Users, handleSelect, SelectedUser }) {
     </div>
   );
 }
+
+export { UsersList };

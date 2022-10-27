@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './MessageForm.scss';
 import { addMessage } from '../../api/api';
 
-export default function MessageForm({ SelectedUser }) {
+function MessageForm({ SelectedUser }) {
   const [newMessage, setNewMessage] = useState('');
   function handleFormChange(e) {
     const { value } = e.target;
@@ -29,3 +29,5 @@ export default function MessageForm({ SelectedUser }) {
     </form>
   );
 }
+
+export { MessageForm };

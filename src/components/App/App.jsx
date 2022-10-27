@@ -1,10 +1,10 @@
 import './App.scss';
-import UsersList from '../UserList/UsersList';
-import UserMessages from '../UserMessages/UserMessages';
-import UserForm from '../UserForm/UserForm';
+import { UsersList } from '../UserList/UsersList';
+import { UserMessages } from '../UserMessages/UserMessages';
+import { UserForm } from '../UserForm/UserForm';
 import { useEffect, useState } from 'react';
 import { getUsers } from '../../api/api';
-import MessageForm from '../MessageForm/MessageForm';
+import { MessageForm } from '../MessageForm/MessageForm';
 
 function App() {
   const [users, setUsers] = useState([]);

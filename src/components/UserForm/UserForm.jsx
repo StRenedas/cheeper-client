@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './UserForm.scss';
 import { addUser } from '../../api/api';
 
-export default function UserForm({ handleAdd }) {
+function UserForm({ handleAdd }) {
   const [newUser, setNewUser] = useState({ name: '', nickname: '' });
 
   function handleFormChange(e) {
@@ -41,3 +41,5 @@ export default function UserForm({ handleAdd }) {
     </form>
   );
 }
+
+export { UserForm };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getMessages } from '../../api/api';
 import './UserMessages.scss';
-export default function UserMessages({ SelectedUser }) {
+function UserMessages({ SelectedUser }) {
   const [messages, setMessages] = useState([]);
   const [dates, setDates] = useState({ from: '', to: '' });
   async function fetchMessages(data) {
@@ -44,3 +44,5 @@ export default function UserMessages({ SelectedUser }) {
     </div>
   );
 }
+
+export { UserMessages };
