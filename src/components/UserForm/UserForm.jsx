@@ -1,9 +1,9 @@
-import { useState } from "react";
-import "./UserForm.scss";
-import { addUser } from "../../api/api";
+import { useState } from 'react';
+import './UserForm.scss';
+import { addUser } from '../../api/api';
 
 export default function UserForm({ handleAdd }) {
-  const [newUser, setNewUser] = useState({ name: "", nickname: "" });
+  const [newUser, setNewUser] = useState({ name: '', nickname: '' });
 
   function handleFormChange(e) {
     setNewUser((prevState) => {
@@ -15,29 +15,29 @@ export default function UserForm({ handleAdd }) {
   async function handleFormSubmit(e) {
     e.preventDefault();
     await addUser({ user: newUser });
-    await setNewUser({ name: "", nickname: "" });
+    await setNewUser({ name: '', nickname: '' });
     await handleAdd();
   }
 
   return (
-    <form onSubmit={handleFormSubmit} className={"user-add"}>
+    <form onSubmit={handleFormSubmit} className={'user-add'}>
       <input
         type="text"
-        placeholder={"Enter Name"}
-        name={"name"}
+        placeholder={'Enter Name'}
+        name={'name'}
         onChange={handleFormChange}
         value={newUser.name}
-        className={"user-add__input"}
+        className={'user-add__input'}
       />
       <input
         type="text"
-        placeholder={"Enter Nickname"}
-        name={"nickname"}
+        placeholder={'Enter Nickname'}
+        name={'nickname'}
         onChange={handleFormChange}
         value={newUser.nickname}
-        className={"user-add__input"}
+        className={'user-add__input'}
       />
-      <button type={"submit"}>Add New User</button>
+      <button type={'submit'}>Add New User</button>
     </form>
   );
 }

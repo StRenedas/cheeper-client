@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { getMessages } from "../../api/api";
-import "./UserMessages.scss";
+import { useEffect, useState } from 'react';
+import { getMessages } from '../../api/api';
+import './UserMessages.scss';
 export default function UserMessages({ SelectedUser }) {
   const [messages, setMessages] = useState([]);
-  const [dates, setDates] = useState({ from: "", to: "" });
+  const [dates, setDates] = useState({ from: '', to: '' });
   async function fetchMessages(data) {
     const Response = await getMessages(data);
     setMessages(Response.data);
   }
 
   const mappedMessages = messages.map((message, index) => (
-    <li key={index} className={"messages-list__item"}>
+    <li key={index} className={'messages-list__item'}>
       {message.message}
     </li>
   ));
@@ -26,25 +26,20 @@ export default function UserMessages({ SelectedUser }) {
     if (dates.from && dates.to) {
       fetchMessages({
         user_id: SelectedUser,
-        dates,
+        dates
       });
     }
   }, [SelectedUser, dates]);
 
   return (
-    <div className={"messages-form"}>
-      <input type="date" name={"from"} onChange={handleDateChange} />
-      <input type="date" name={"to"} onChange={handleDateChange} />
+    <div className={'messages-form'}>
+      <input type="date" name={'from'} onChange={handleDateChange} />
+      <input type="date" name={'to'} onChange={handleDateChange} />
       <ol
         className={`messages-list ${
-          mappedMessages.length ? "messages-list-yes" : "messages-list-no"
-        }`}
-      >
-        {mappedMessages.length ? (
-          mappedMessages
-        ) : (
-          <li>This user's got no messages</li>
-        )}
+          mappedMessages.length ? 'messages-list-yes' : 'messages-list-no'
+        }`}>
+        {mappedMessages.length ? mappedMessages : <li>This user&apos;s got no messages</li>}
       </ol>
     </div>
   );

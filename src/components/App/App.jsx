@@ -1,10 +1,10 @@
-import "./App.scss";
-import UsersList from "../UserList/UsersList";
-import UserMessages from "../UserMessages/UserMessages";
-import UserForm from "../UserForm/UserForm";
-import { useEffect, useState } from "react";
-import { getUsers } from "../../api/api";
-import MessageForm from "../MessageForm/MessageForm";
+import './App.scss';
+import UsersList from '../UserList/UsersList';
+import UserMessages from '../UserMessages/UserMessages';
+import UserForm from '../UserForm/UserForm';
+import { useEffect, useState } from 'react';
+import { getUsers } from '../../api/api';
+import MessageForm from '../MessageForm/MessageForm';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -20,12 +20,11 @@ function App() {
   }, []);
 
   return (
-    <main className={"dashboard"}>
+    <main className={'dashboard'}>
       <UsersList
         Users={users}
         handleSelect={setSelectedUser}
-        SelectedUser={selectedUser}
-      ></UsersList>
+        SelectedUser={selectedUser}></UsersList>
       <UserMessages SelectedUser={selectedUser} />
       <UserForm handleAdd={fetchUsers}></UserForm>
       <MessageForm SelectedUser={selectedUser}></MessageForm>

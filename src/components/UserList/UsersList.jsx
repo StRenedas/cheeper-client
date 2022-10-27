@@ -1,8 +1,8 @@
-import User from "../User/User";
+import User from '../User/User';
 
-import "./UsersList.scss";
-import { useEffect, useState } from "react";
-import { getFriends, getFriendsCount } from "../../api/api";
+import './UsersList.scss';
+import { useEffect, useState } from 'react';
+import { getFriends, getFriendsCount } from '../../api/api';
 
 export default function UsersList({ Users, handleSelect, SelectedUser }) {
   const [friends, setFriends] = useState([]);
@@ -16,7 +16,7 @@ export default function UsersList({ Users, handleSelect, SelectedUser }) {
 
     const FriendsResponse = await getFriends({ user_id: SelectedUser });
     const FriendsCountResponse = await getFriendsCount({
-      user_id: SelectedUser,
+      user_id: SelectedUser
     });
     await setFriends(FriendsResponse.data);
     await setFriendsCount(FriendsCountResponse.data);
@@ -35,14 +35,12 @@ export default function UsersList({ Users, handleSelect, SelectedUser }) {
   }, [SelectedUser]);
 
   const mappedUsers = Users.map((user) => <User User={user} key={user.id} />);
-  const mappedFriends = friends.map((friend, index) => (
-    <li key={index}>{friend}</li>
-  ));
+  const mappedFriends = friends.map((friend, index) => <li key={index}>{friend}</li>);
   console.log(loading);
   return (
-    <div>
-      <select className={"user-list"} onChange={handleSelectedUser}>
-        <option value={""} selected={true} disabled={true}>
+    <div className={'users'}>
+      <select className={'user-list'} onChange={handleSelectedUser}>
+        <option value={''} selected={true} disabled={true}>
           Choose a user
         </option>
         {mappedUsers.length ? mappedUsers : <option>No users found</option>}
