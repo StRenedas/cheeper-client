@@ -3,23 +3,16 @@ import "./MessageForm.scss";
 import { addMessage } from "../../api/api";
 
 export default function MessageForm({ SelectedUser }) {
-  const [newMessage, setNewMessage] = useState({
-    userid: SelectedUser,
-    text: "",
-  });
-  console.log(SelectedUser);
-  console.log(newMessage);
+  const [newMessage, setNewMessage] = useState("");
   function handleFormChange(e) {
-    setNewMessage((prevState) => {
-      const { name, value } = e.target;
-      return { ...prevState, [name]: value };
-    });
+    const { value } = e.target;
+    setNewMessage(value);
   }
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    await addMessage({ message: newMessage });
-    await setNewMessage({ userid: SelectedUser, text: "" });
+    await addMessage({ message: { userid: SelectedUser, text: newMessage } });
+    await setNewMessage("");
   }
 
   return (
@@ -28,8 +21,9 @@ export default function MessageForm({ SelectedUser }) {
         placeholder={"Enter new message"}
         name={"text"}
         onChange={handleFormChange}
-        value={newMessage.text}
+        value={newMessage}
         className={"message-add__input"}
+        disabled={SelectedUser}
       />
       <button type={"submit"}>Add New Message</button>
     </form>
